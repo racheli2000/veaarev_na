@@ -1,0 +1,66 @@
+<div id="h">
+
+    <img src="assets/header.jpg" id="header"><br>
+
+    <div class="numoftickets">{{ticket}}</div>
+
+    <div id="time">
+        <countdown-timer [end]="time"></countdown-timer>
+    </div>
+
+</div>
+
+<div *ngIf="ticket==300||ticket==100||ticket==30">
+    <h1 id="free"> נכנסת<br> להגרלה זו<br> בחינם!</h1>
+</div>
+
+
+<!-- max="{{t}}-{{maxvalue}}" -->
+<img src="/assets/בר מזל.jpg" id="specialCard">
+<input type="number" min="0" value="0" id="specialCardInput" #s (keyup)="save(s.value)" (click)="save(s.value)">
+<p id="sc">שים לב! כרטיס זה עולה 45 ש"ח</p>
+
+<div *ngIf="!isLoading">
+    <div *ngFor="let item of products" id="pica">
+        <div *ngIf="item.product_kod!=54">
+            <div class="pic">
+
+                <img class="pictures" src="assets/{{item.prouduct_picture}}.jpg"
+                    routerLink="/show-gift/{{item.product_kod}}">
+
+                <div *ngFor="let item2 of orderService.currentPackage ;let i = index">
+                    <div *ngIf="item2.product_kod == item.product_kod">
+                        <p class="try"> {{item.product_name}}
+                            <input type="number" id="inputext" min="0" max="{{ticket + item2.amount+1}}"
+                                [(ngModel)]="orderService.currentPackage[i].amount" #amount
+                                (change)="NumOfTicketsLeft(amount.value, item.product_kod, 1)"
+                                (keyup)="NumOfTicketsLeft(amount.value, item.product_kod,2)">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="ticket==0&& os.purchaseOption==true">
+    <img id="pay" src="assets/כפתור לתשלום.png" routerLink="/payment/" target="p" (click)="SaveProducts()">
+</div>
+
+<div *ngIf="os.purchaseOption==false&&( ticket>0||ts.specialCard>0)">
+    <img id="pay" src="assets/כפתור לתשלום.png" routerLink="/payment/" target="p" (click)="SaveProducts()">
+</div>
+
+<!-- <div class="ditails">
+ 
+    <button (click)='startTimer()'>Start Timer</button>
+    <button (click)='pauseTimer()'>Pause</button>
+    <p>{{timeLeft}}</p> -->
+<!-- <p id="demo"></p>
+
+< <script>
+        var d = new Date();
+        d.setDate(20);
+        document.getElementById("time").innerHTML = d;
+
+</script> -->

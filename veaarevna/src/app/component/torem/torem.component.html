@@ -1,0 +1,58 @@
+
+<form (ngSubmit)="f.form.valid&&getErrorMessage()" (submit)="save(toremImage)" #f="ngForm">
+
+
+  <mat-form-field appearance="fill" class="example-container">
+    <mat-label>שם החברה</mat-label>
+    <input matInput [formControl]="name" required [(ngModel)]="torem.Business_name">
+    <mat-error *ngIf="email.invalid">{{getErrorMessage(0)}}</mat-error>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field appearance="fill" class="example-container">
+    <mat-label>כתובת</mat-label>
+    <input matInput [formControl]="adrress" required [(ngModel)]="torem.torem_address">
+    <mat-error *ngIf="email.invalid">{{getErrorMessage(0)}}</mat-error>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field appearance="fill" class="example-container">
+    <mat-label>מייל</mat-label>
+    <input matInput [formControl]="email" required [(ngModel)]="torem.torem_email">
+    <mat-error *ngIf="email.invalid">{{getErrorMessage(1)}}</mat-error>
+  </mat-form-field><br>
+
+  <mat-form-field appearance="fill" class="example-container">
+    <mat-label>טלפון</mat-label>
+    <input matInput [formControl]="phone" required [(ngModel)]="torem.torem_phone">
+    <mat-error *ngIf="email.invalid">{{getErrorMessage(0)}}</mat-error>
+  </mat-form-field><br>
+
+  <mat-form-field appearance="fill" class="example-container">
+    <mat-label>שם מוצר</mat-label>
+    <input matInput [formControl]="pname" required [(ngModel)]="product.product_name">
+    <mat-error *ngIf="email.invalid">{{getErrorMessage(0)}}</mat-error>
+  </mat-form-field>
+  <br>
+
+  
+  <input type="file" placeholder="תמונת מוצר" #toremImage name="prouduct_picture" [(ngModel)]="product.prouduct_picture"
+    required>
+
+  <div class="example-container">
+    <mat-form-field appearance="fill">
+      <mat-label>תאור מוצר</mat-label>
+      <textarea matInput [formControl]="description" required [(ngModel)]="product.description" rows="9"
+        name="description"></textarea>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage(0)}}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <!-- <textarea name="message" rows="10" name="description" placeholder="תאור המוצר" [(ngModel)]="product.description"
+        required></textarea><br><br> -->
+
+
+  <button type="submit" mat-button id="agree">אשר</button>
+
+
+</form>

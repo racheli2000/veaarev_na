@@ -1,0 +1,79 @@
+
+:host
+{
+    background-image: url("src/assets/רשימת הזוכים.jpg");
+    display: flex;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    /* height: 305%; */
+    /* width: 95%; */
+    /* margin-right: 15%; */
+}
+
+/* table { */
+    /* width:100%; */
+    /* text-align: center; */
+    /* margin-right: 30%; */
+    /* margin-top: 15%; */
+    /* margin-top: 5%;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: center;
+}
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table#t01 tr:nth-child(odd) {
+   background-color:#fff;
+}
+table#t01 th	{
+    background-color: #000033;
+    color: white;
+} */
+
+/* th
+{
+    height: 120px; 
+    border: groove; 
+    text-align: right;
+    margin: 20px;
+}
+
+td
+{
+    margin: 10%;
+} */
+
+
+table {
+    border-collapse: collapse;
+    width: 85%;
+    text-align: right;
+    margin-top: 28%;
+    margin-right: 7%;
+
+  }
+
+ 
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: right;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: dddddd;
+    color: #000033;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #000033;
+    color:  #dddddd;
+  }
+

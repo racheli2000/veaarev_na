@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face
+{
+    font-family: Basis;
+    src: url(src/assets/FbBasis-Medium.otf) format("OpenType");
+    /* font-family: english;
+    src: url(src/assets/FbBasisEng-Medium.otf) format("OpenType"); */
+}
+
+body
+{
+    font-family: 'Basis';
+    direction: rtl;
+    /* right: 0%; */
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

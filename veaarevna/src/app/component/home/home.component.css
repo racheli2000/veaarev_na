@@ -1,0 +1,39 @@
+/* body 
+{
+    background-image: url("home.jpg");
+
+}  */
+
+
+img
+{
+    
+/* width: 890px;
+height: 350px; */
+/* margin: 7px; */
+/* margin-top: 40px; */
+
+width: 100%;
+height: 80%;
+margin-top: 3%;
+/* margin-left: 500%; */
+/* margin-right: 0%; */
+
+
+}
+
+/* .container {
+    position: relative;
+    font-family: Arial;
+  } */
+  
+  /* .text {
+    position: absolute;
+    bottom: 100px;
+    right: 20px;
+    background-color: black;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+  } */
+

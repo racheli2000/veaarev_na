@@ -1,0 +1,61 @@
+
+:host
+{
+    background-image: url("src/assets/טופס תרומה.png");
+    display: flex;
+    background-size: 99%;
+    background-repeat: no-repeat;
+    height: 245%;
+    width: 85%;
+    margin-right: 5%;
+}
+
+form
+{
+    margin-top: 36%;
+    margin-right: 39%;
+}
+
+input
+{
+    /* background-color: #e68a00; */
+    border: none;
+}
+
+textarea
+{
+    /* background-color: rgb(250, 220, 89); */
+    border: none;
+}
+
+#agree
+{
+    margin-right: 27%;
+    width: 30%;
+    text-align: center;
+}
+
+p
+{
+    color:red;
+    margin-top: 0%;
+    font-size: 80%;
+}
+
+
+/* .example-container .mat-form-field + .mat-form-field {
+  margin-left: 1000px;
+} */
+
+mat-label
+{
+    color: rgb(119, 146, 155);
+    text-align: center;
+    direction: rtl;
+}
+
+div
+{
+    margin: 0px;
+    padding: 0%;
+}

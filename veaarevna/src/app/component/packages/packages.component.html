@@ -1,0 +1,101 @@
+<!-- <script src="jquery-3.4.1.js"></script>
+<script>
+
+    $(document).ready(function(){
+
+        $("#s").click(function(){
+            $("#try").animate({fontSize:"24px"},1000)
+            .animate({bor})
+        });
+
+    });
+// $("#s").toggle(function(){
+// $("#try").slideUp("slow");
+// })
+
+
+
+</script> -->
+
+<!-- <script src="jquery-3.4.1.js"></script> -->
+
+
+<div class="container">
+
+    <img src="assets/חבילות והערב נא.jpg" usemap="#map" id="backround" alt="try" (click)="check()">
+
+    <map name="map">
+
+        <area shape="rect" coords="115,520,305,300" routerLink="/tickets/" (click)="package(AllPackages[3])" />
+
+        <area shape="rect" coords="352,494,545,295" routerLink="/tickets/" (click)="package(AllPackages[2])" />
+
+        <area shape="rect" coords="595,492,785,295" routerLink="/tickets/" (click)="package(AllPackages[1])" />
+
+        <area shape="rect" coords="880,465,930,450" (click)="singleTickets(t.value)" />
+
+        <area shape="rect" coords="515,740,208,575" routerLink="/tickets/" (click)="package(AllPackages[5])" />
+
+        <area shape="rect" coords="568,740,875,575" routerLink="/tickets/" (click)="package(AllPackages[4])" />
+
+
+    </map>
+
+    <div class="text">
+        <input type="number" id="num" min="1" value="1" #t>
+    </div>
+
+</div>
+
+<!-- <div *ngFor="let item of AllPackages">
+    <div id="pac">
+        <div id="name">
+            {{item.package_name}}<br>
+        </div>
+        <div id="text">
+            {{item.package_price}}<br>
+        </div>
+        <div>
+            {{item.num_of_cards}}<br><br>
+        </div>
+
+    </div>
+
+</div> -->
+
+
+
+<!-- <app-tickets [ticket]="ticket"></app-tickets> -->
+
+
+
+
+<!--כל התמונות בנפרד-->
+<!-- <div>
+    <span routerLink="/tickets/" >
+        <img src="assets/בחירת חבילה.png" usemap="#map" alt="try" id="choose">
+        
+    </span>
+</div> -->
+<!-- <div id="fl">
+    <span routerLink="/tickets/">
+        <img src="assets/כרטיס בודד.png" usemap="#map" alt="try" id="a">
+        <img src="assets/חבילה קטנה.png" usemap="#map" alt="try" class="p">
+        <img src="assets/חבילה בסיסית.png" usemap="#map" alt="try" class="p">
+        <img src="assets/חבילה כדאית.png" usemap="#map" alt="try" id="b">
+    </span>
+</div>  -->
+<!--div>
+    <span routerLink="/tickets/">
+        
+        <img src="assets/חבילה יוקרתי.png" usemap="#map" alt="try" class="p">
+        <img src="assets/חבילה חלומית.png" usemap="#map" alt="try" class="p" >
+
+    </span>
+</div> -->
+
+
+<!-- <br><br>
+<input type="button" id="s">
+
+<div id="try">try</div> -->

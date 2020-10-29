@@ -1,0 +1,139 @@
+
+:host
+{
+    background-image: url("src/assets/פרטי תשלום.jpg");
+    display: flex;
+    background-size: 99%;
+    background-repeat: no-repeat;
+    height: 130%;
+    width: 85%;
+    margin-right: 8%;
+}
+
+/* input
+{
+    margin: 2px;
+    /* width: 0%; */
+    /* background-color: lightblue;
+    border: none; */
+    /* border: solid;
+    border-color:darkblue; */
+
+
+/* }
+
+#send
+{
+    margin-right: 30%;
+}
+
+h1
+{
+direction: rtl;
+text-align: center;
+}
+
+form
+{
+    direction: rtl;
+    font-family: 'Fb Basis';
+    margin-right: 24%;
+    
+}
+
+span
+{
+    margin-top: 58%;
+    margin-left: 45%;
+}
+*/
+#sum
+{
+    margin-top: 8.6%;
+    margin-right: 38%;
+    font-size: 190%;
+}
+
+/*#inputs
+{
+    margin-top: 35%;
+     padding-bottom: 33%; 
+/* }
+
+#middle
+{
+    margin-right: 10%;
+    width: 100%;
+}
+ */
+ p
+{
+    margin-right: 0%;
+} 
+
+/* #email
+{
+    width: 0%;
+}
+
+span
+{
+    width: 50%;
+}  */
+
+#text
+{
+    margin-right: 31%;
+    font-size: 107%;
+    margin-top: -1%;
+    color: #000033;
+    width: 25%;
+}
+
+#paypal
+{
+    margin-top: -2.5%;
+    margin-right: 37%;
+    width: 10%;
+}
+
+
+/* .example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+
+} */
+
+mat-label
+{
+    color: rgb(119, 146, 155);
+    text-align: center;
+    direction: rtl;
+}
+
+.example-container
+{
+    margin-left: 0.4%;
+    /* margin-right: 0.4%; */
+}
+
+input
+{
+    margin: 2%;
+}
+
+form
+{
+    margin-top: 23%;
+    margin-right: 17%;
+}
+
+#middle
+{
+    margin-right: 10%;
+}
+
+#send
+{
+    margin-right: 36%;
+    margin-top: -1%;
+}

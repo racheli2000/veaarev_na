@@ -1,0 +1,76 @@
+
+
+<table id="t">
+    <tr>
+      <th></th>
+      <th>הפרס</th>
+      <th> שם הזוכה</th>
+      
+    </tr>
+
+    <tr *ngFor="let item of Winners" >
+        <td>{{i}}</td> 
+        {{add()}}
+        <td>{{item.product_name}}</td>
+        <td>{{item.user_firsname}} {{item.user_lastname}}</td>
+        
+    </tr>
+
+  </table>
+
+
+
+<!-- 
+<table id="t01">
+    <tr>
+        <th></th>
+        <th>שם</th>
+        <th>מוצר</th>
+    </tr>
+    <div *ngFor="let item of Winners">
+
+        <tr>
+           <td>{{i}}</td> 
+            {{add()}}
+            <td>{{item.user_firsname}} {{item.user_lastname}}</td>
+            <td>{{item.product_name}}</td>
+        </tr>
+    </div>
+</table> -->
+
+<!-- <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+    <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> שם פרטי </th>
+     
+        <div *ngFor="let item of Winners">
+
+            <td mat-cell *matCellDef="let element"> {{item.user_firsname}} </td>
+
+        </div>
+    </ng-container>
+
+    <ng-container matColumnDef="weight">
+        <th mat-header-cell *matHeaderCellDef> שם משפחה </th>
+        <div *ngFor="let item of Winners">
+            <td mat-cell *matCellDef="let element"> {{item.user_lastname}} </td>
+
+        </div>
+    </ng-container>
+
+    <ng-container matColumnDef="symbol">
+        <th mat-header-cell *matHeaderCellDef> שם מוצר </th>
+        <div *ngFor="let item of Winners">
+            <td mat-cell *matCellDef="let element"> {{item.product_name}} </td>
+        </div>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table> -->

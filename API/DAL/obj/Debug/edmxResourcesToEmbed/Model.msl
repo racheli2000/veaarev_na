@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="veaarev_vaModelStoreContainer" CdmEntityContainer="veaarev_vaEntities">
+    <EntitySetMapping Name="Packages">
+      <EntityTypeMapping TypeName="veaarev_vaModel.Package">
+        <MappingFragment StoreEntitySet="Packages">
+          <ScalarProperty Name="package_kod" ColumnName="package_kod" />
+          <ScalarProperty Name="package_name" ColumnName="package_name" />
+          <ScalarProperty Name="package_price" ColumnName="package_price" />
+          <ScalarProperty Name="num_of_cards" ColumnName="num_of_cards" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="veaarev_vaModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="user_kod" ColumnName="user_kod" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="user_password" ColumnName="user_password" />
+          <ScalarProperty Name="user_firsname" ColumnName="user_firsname" />
+          <ScalarProperty Name="user_lastname" ColumnName="user_lastname" />
+          <ScalarProperty Name="user_email" ColumnName="user_email" />
+          <ScalarProperty Name="user_phone" ColumnName="user_phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Donation_for_package">
+      <EntityTypeMapping TypeName="veaarev_vaModel.Donation_for_package">
+        <MappingFragment StoreEntitySet="Donation_for_package">
+          <ScalarProperty Name="troma_kod" ColumnName="troma_kod" />
+          <ScalarProperty Name="package_kod" ColumnName="package_kod" />
+          <ScalarProperty Name="donation_for_package_kod" ColumnName="donation_for_package_kod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Selected_Products">
+      <EntityTypeMapping TypeName="veaarev_vaModel.Selected_Products">
+        <MappingFragment StoreEntitySet="Selected_Products">
+          <ScalarProperty Name="donation_for_package_kod" ColumnName="donation_for_package_kod" />
+          <ScalarProperty Name="amount_of_tickets" ColumnName="amount_of_tickets" />
+          <ScalarProperty Name="product_kod" ColumnName="product_kod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Donations">
+      <EntityTypeMapping TypeName="veaarev_vaModel.Donation">
+        <MappingFragment StoreEntitySet="Donations">
+          <ScalarProperty Name="receipt" ColumnName="receipt" />
+          <ScalarProperty Name="troma_amount" ColumnName="troma_amount" />
+          <ScalarProperty Name="troma_date" ColumnName="troma_date" />
+          <ScalarProperty Name="user_kod" ColumnName="user_kod" />
+          <ScalarProperty Name="troma_kod" ColumnName="troma_kod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="veaarev_vaModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="winner_id" ColumnName="winner_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="amount_of_tickets_even" ColumnName="amount_of_tickets_even" />
+          <ScalarProperty Name="prouduct_picture" ColumnName="prouduct_picture" />
+          <ScalarProperty Name="torem_id" ColumnName="torem_id" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="product_kod" ColumnName="product_kod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tormims">
+      <EntityTypeMapping TypeName="veaarev_vaModel.Tormim">
+        <MappingFragment StoreEntitySet="Tormim">
+          <ScalarProperty Name="torem_phone" ColumnName="torem_phone" />
+          <ScalarProperty Name="torem_email" ColumnName="torem_email" />
+          <ScalarProperty Name="torem_address" ColumnName="torem_address" />
+          <ScalarProperty Name="Business_name" ColumnName="Business_name" />
+          <ScalarProperty Name="torem_id" ColumnName="torem_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products_for_packages">
+      <EntityTypeMapping TypeName="veaarev_vaModel.products_for_packages">
+        <MappingFragment StoreEntitySet="products_for_packages">
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="Free_lottery_minimum_amount" ColumnName="Free_lottery_minimum_amount" />
+          <ScalarProperty Name="product_kod" ColumnName="product_kod" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

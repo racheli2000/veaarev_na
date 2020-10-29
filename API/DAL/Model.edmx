@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="veaarev_vaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Donation_for_package">
+          <Key>
+            <PropertyRef Name="donation_for_package_kod" />
+          </Key>
+          <Property Name="donation_for_package_kod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="package_kod" Type="int" />
+          <Property Name="troma_kod" Type="int" />
+        </EntityType>
+        <EntityType Name="Donations">
+          <Key>
+            <PropertyRef Name="troma_kod" />
+          </Key>
+          <Property Name="troma_kod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_kod" Type="int" />
+          <Property Name="troma_date" Type="date" />
+          <Property Name="troma_amount" Type="int" />
+          <Property Name="receipt" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="Packages">
+          <Key>
+            <PropertyRef Name="package_kod" />
+          </Key>
+          <Property Name="package_kod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="package_name" Type="nvarchar" MaxLength="30" />
+          <Property Name="package_price" Type="int" />
+          <Property Name="num_of_cards" Type="int" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="product_kod" />
+          </Key>
+          <Property Name="product_kod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_name" Type="nvarchar" MaxLength="30" />
+          <Property Name="torem_id" Type="int" />
+          <Property Name="prouduct_picture" Type="nvarchar" MaxLength="50" />
+          <Property Name="amount_of_tickets_even" Type="int" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="winner_id" Type="int" />
+        </EntityType>
+        <EntityType Name="products_for_packages">
+          <Key>
+            <PropertyRef Name="product_kod" />
+          </Key>
+          <Property Name="product_kod" Type="int" Nullable="false" />
+          <Property Name="Free_lottery_minimum_amount" Type="int" />
+          <Property Name="price" Type="int" />
+        </EntityType>
+        <EntityType Name="Selected_Products">
+          <Key>
+            <PropertyRef Name="product_kod" />
+            <PropertyRef Name="donation_for_package_kod" />
+          </Key>
+          <Property Name="product_kod" Type="int" Nullable="false" />
+          <Property Name="amount_of_tickets" Type="int" />
+          <Property Name="donation_for_package_kod" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tormim">
+          <Key>
+            <PropertyRef Name="torem_id" />
+          </Key>
+          <Property Name="torem_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Business_name" Type="nvarchar" MaxLength="30" />
+          <Property Name="torem_address" Type="nvarchar" MaxLength="50" />
+          <Property Name="torem_email" Type="nvarchar" MaxLength="50" />
+          <Property Name="torem_phone" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="user_kod" />
+          </Key>
+          <Property Name="user_kod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="nvarchar" MaxLength="15" />
+          <Property Name="user_password" Type="int" />
+          <Property Name="user_firsname" Type="nvarchar" MaxLength="30" />
+          <Property Name="user_lastname" Type="nvarchar" MaxLength="30" />
+          <Property Name="user_email" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_phone" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <Association Name="fg_donation_for_package_1">
+          <End Role="Packages" Type="Self.Packages" Multiplicity="0..1" />
+          <End Role="Donation_for_package" Type="Self.Donation_for_package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Packages">
+              <PropertyRef Name="package_kod" />
+            </Principal>
+            <Dependent Role="Donation_for_package">
+              <PropertyRef Name="package_kod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fg_donation_for_package_2">
+          <End Role="Donations" Type="Self.Donations" Multiplicity="0..1" />
+          <End Role="Donation_for_package" Type="Self.Donation_for_package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donations">
+              <PropertyRef Name="troma_kod" />
+            </Principal>
+            <Dependent Role="Donation_for_package">
+              <PropertyRef Name="troma_kod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fg_packages_for_donations">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="products_for_packages" Type="Self.products_for_packages" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="product_kod" />
+            </Principal>
+            <Dependent Role="products_for_packages">
+              <PropertyRef Name="product_kod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fg_Selected_Products_1">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Selected_Products" Type="Self.Selected_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="product_kod" />
+            </Principal>
+            <Dependent Role="Selected_Products">
+              <PropertyRef Name="product_kod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Products__winner__68487DD7">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_kod" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="winner_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Selected___donat__60A75C0F">
+          <End Role="Donation_for_package" Type="Self.Donation_for_package" Multiplicity="1" />
+          <End Role="Selected_Products" Type="Self.Selected_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donation_for_package">
+              <PropertyRef Name="donation_for_package_kod" />
+            </Principal>
+            <Dependent Role="Selected_Products">
+              <PropertyRef Name="donation_for_package_kod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donations_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Donations" Type="Self.Donations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="user_kod" />
+            </Principal>
+            <Dependent Role="Donations">
+              <PropertyRef Name="user_kod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="veaarev_vaModelStoreContainer">
+          <EntitySet Name="Donation_for_package" EntityType="Self.Donation_for_package" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Donations" EntityType="Self.Donations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Packages" EntityType="Self.Packages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="products_for_packages" EntityType="Self.products_for_packages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Selected_Products" EntityType="Self.Selected_Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tormim" EntityType="Self.Tormim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fg_donation_for_package_1" Association="Self.fg_donation_for_package_1">
+            <End Role="Packages" EntitySet="Packages" />
+            <End Role="Donation_for_package" EntitySet="Donation_for_package" />
+          </AssociationSet>
+          <AssociationSet Name="fg_donation_for_package_2" Association="Self.fg_donation_for_package_2">
+            <End Role="Donations" EntitySet="Donations" />
+            <End Role="Donation_for_package" EntitySet="Donation_for_package" />
+          </AssociationSet>
+          <AssociationSet Name="fg_packages_for_donations" Association="Self.fg_packages_for_donations">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="products_for_packages" EntitySet="products_for_packages" />
+          </AssociationSet>
+          <AssociationSet Name="fg_Selected_Products_1" Association="Self.fg_Selected_Products_1">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Selected_Products" EntitySet="Selected_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Products__winner__68487DD7" Association="Self.FK__Products__winner__68487DD7">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Selected___donat__60A75C0F" Association="Self.FK__Selected___donat__60A75C0F">
+            <End Role="Donation_for_package" EntitySet="Donation_for_package" />
+            <End Role="Selected_Products" EntitySet="Selected_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donations_Users" Association="Self.FK_Donations_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Donations" EntitySet="Donations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="veaarev_vaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Package">
+          <Key>
+            <PropertyRef Name="package_kod" />
+          </Key>
+          <Property Name="package_kod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="package_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="package_price" Type="Int32" />
+          <Property Name="num_of_cards" Type="Int32" />
+          <NavigationProperty Name="Donation_for_package" Relationship="veaarev_vaModel.fg_donation_for_package_1" FromRole="Package" ToRole="Donation_for_package" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="user_kod" />
+          </Key>
+          <Property Name="user_kod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="user_password" Type="Int32" />
+          <Property Name="user_firsname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="user_lastname" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="user_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Donations" Relationship="veaarev_vaModel.FK_Donations_Users" FromRole="User" ToRole="Donation" />
+          <NavigationProperty Name="Products" Relationship="veaarev_vaModel.FK__Products__winner__68487DD7" FromRole="User" ToRole="Product" />
+        </EntityType>
+        <EntityContainer Name="veaarev_vaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Packages" EntityType="Self.Package" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Donation_for_package" EntityType="veaarev_vaModel.Donation_for_package" />
+          <AssociationSet Name="fg_donation_for_package_1" Association="veaarev_vaModel.fg_donation_for_package_1">
+            <End Role="Package" EntitySet="Packages" />
+            <End Role="Donation_for_package" EntitySet="Donation_for_package" />
+          </AssociationSet>
+          <EntitySet Name="Selected_Products" EntityType="veaarev_vaModel.Selected_Products" />
+          <AssociationSet Name="FK__Selected___donat__60A75C0F" Association="veaarev_vaModel.FK__Selected___donat__60A75C0F">
+            <End Role="Donation_for_package" EntitySet="Donation_for_package" />
+            <End Role="Selected_Products" EntitySet="Selected_Products" />
+          </AssociationSet>
+          <EntitySet Name="Donations" EntityType="veaarev_vaModel.Donation" />
+          <AssociationSet Name="fg_donation_for_package_2" Association="veaarev_vaModel.fg_donation_for_package_2">
+            <End Role="Donation" EntitySet="Donations" />
+            <End Role="Donation_for_package" EntitySet="Donation_for_package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donations_Users" Association="veaarev_vaModel.FK_Donations_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Donation" EntitySet="Donations" />
+          </AssociationSet>
+          <EntitySet Name="Products" EntityType="veaarev_vaModel.Product" />
+          <EntitySet Name="Tormims" EntityType="veaarev_vaModel.Tormim" />
+          <AssociationSet Name="fg_Selected_Products_1" Association="veaarev_vaModel.fg_Selected_Products_1">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Selected_Products" EntitySet="Selected_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Products__winner__68487DD7" Association="veaarev_vaModel.FK__Products__winner__68487DD7">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <EntitySet Name="products_for_packages" EntityType="veaarev_vaModel.products_for_packages" />
+          <AssociationSet Name="fg_packages_for_donations" Association="veaarev_vaModel.fg_packages_for_donations">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="products_for_packages" EntitySet="products_for_packages" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Donation_for_package">
+          <Key>
+            <PropertyRef Name="donation_for_package_kod" />
+          </Key>
+          <Property Name="donation_for_package_kod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="package_kod" Type="Int32" />
+          <Property Name="troma_kod" Type="Int32" />
+          <NavigationProperty Name="Package" Relationship="veaarev_vaModel.fg_donation_for_package_1" FromRole="Donation_for_package" ToRole="Package" />
+          <NavigationProperty Name="Selected_Products" Relationship="veaarev_vaModel.FK__Selected___donat__60A75C0F" FromRole="Donation_for_package" ToRole="Selected_Products" />
+          <NavigationProperty Name="Donation" Relationship="veaarev_vaModel.fg_donation_for_package_2" FromRole="Donation_for_package" ToRole="Donation" />
+        </EntityType>
+        <Association Name="fg_donation_for_package_1">
+          <End Type="veaarev_vaModel.Package" Role="Package" Multiplicity="0..1" />
+          <End Type="veaarev_vaModel.Donation_for_package" Role="Donation_for_package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="package_kod" />
+            </Principal>
+            <Dependent Role="Donation_for_package">
+              <PropertyRef Name="package_kod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Selected_Products">
+          <Key>
+            <PropertyRef Name="product_kod" />
+            <PropertyRef Name="donation_for_package_kod" />
+          </Key>
+          <Property Name="product_kod" Type="Int32" Nullable="false" />
+          <Property Name="amount_of_tickets" Type="Int32" />
+          <Property Name="donation_for_package_kod" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Donation_for_package" Relationship="veaarev_vaModel.FK__Selected___donat__60A75C0F" FromRole="Selected_Products" ToRole="Donation_for_package" />
+          <NavigationProperty Name="Product" Relationship="veaarev_vaModel.fg_Selected_Products_1" FromRole="Selected_Products" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK__Selected___donat__60A75C0F">
+          <End Type="veaarev_vaModel.Donation_for_package" Role="Donation_for_package" Multiplicity="1" />
+          <End Type="veaarev_vaModel.Selected_Products" Role="Selected_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donation_for_package">
+              <PropertyRef Name="donation_for_package_kod" />
+            </Principal>
+            <Dependent Role="Selected_Products">
+              <PropertyRef Name="donation_for_package_kod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Donation">
+          <Key>
+            <PropertyRef Name="troma_kod" />
+          </Key>
+          <Property Name="troma_kod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_kod" Type="Int32" />
+          <Property Name="troma_date" Type="DateTime" Precision="0" />
+          <Property Name="troma_amount" Type="Int32" />
+          <Property Name="receipt" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Donation_for_package" Relationship="veaarev_vaModel.fg_donation_for_package_2" FromRole="Donation" ToRole="Donation_for_package" />
+          <NavigationProperty Name="User" Relationship="veaarev_vaModel.FK_Donations_Users" FromRole="Donation" ToRole="User" />
+        </EntityType>
+        <Association Name="fg_donation_for_package_2">
+          <End Type="veaarev_vaModel.Donation" Role="Donation" Multiplicity="0..1" />
+          <End Type="veaarev_vaModel.Donation_for_package" Role="Donation_for_package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Donation">
+              <PropertyRef Name="troma_kod" />
+            </Principal>
+            <Dependent Role="Donation_for_package">
+              <PropertyRef Name="troma_kod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donations_Users">
+          <End Type="veaarev_vaModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="veaarev_vaModel.Donation" Role="Donation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="user_kod" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="user_kod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="product_kod" />
+          </Key>
+          <Property Name="product_kod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="torem_id" Type="Int32" />
+          <Property Name="prouduct_picture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="amount_of_tickets_even" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="winner_id" Type="Int32" />
+          <NavigationProperty Name="Selected_Products" Relationship="veaarev_vaModel.fg_Selected_Products_1" FromRole="Product" ToRole="Selected_Products" />
+          <NavigationProperty Name="User" Relationship="veaarev_vaModel.FK__Products__winner__68487DD7" FromRole="Product" ToRole="User" />
+          <NavigationProperty Name="products_for_packages" Relationship="veaarev_vaModel.fg_packages_for_donations" FromRole="Product" ToRole="products_for_packages" />
+        </EntityType>
+        <EntityType Name="Tormim">
+          <Key>
+            <PropertyRef Name="torem_id" />
+          </Key>
+          <Property Name="torem_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Business_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="torem_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="torem_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="torem_phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="fg_Selected_Products_1">
+          <End Type="veaarev_vaModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="veaarev_vaModel.Selected_Products" Role="Selected_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_kod" />
+            </Principal>
+            <Dependent Role="Selected_Products">
+              <PropertyRef Name="product_kod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Products__winner__68487DD7">
+          <End Type="veaarev_vaModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="veaarev_vaModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="user_kod" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="winner_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="products_for_packages">
+          <Key>
+            <PropertyRef Name="product_kod" />
+          </Key>
+          <Property Name="product_kod" Type="Int32" Nullable="false" />
+          <Property Name="Free_lottery_minimum_amount" Type="Int32" />
+          <Property Name="price" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="veaarev_vaModel.fg_packages_for_donations" FromRole="products_for_packages" ToRole="Product" />
+        </EntityType>
+        <Association Name="fg_packages_for_donations">
+          <End Type="veaarev_vaModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="veaarev_vaModel.products_for_packages" Role="products_for_packages" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_kod" />
+            </Principal>
+            <Dependent Role="products_for_packages">
+              <PropertyRef Name="product_kod" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="veaarev_vaModelStoreContainer" CdmEntityContainer="veaarev_vaEntities">
+          <EntitySetMapping Name="Packages">
+            <EntityTypeMapping TypeName="veaarev_vaModel.Package">
+              <MappingFragment StoreEntitySet="Packages">
+                <ScalarProperty Name="package_kod" ColumnName="package_kod" />
+                <ScalarProperty Name="package_name" ColumnName="package_name" />
+                <ScalarProperty Name="package_price" ColumnName="package_price" />
+                <ScalarProperty Name="num_of_cards" ColumnName="num_of_cards" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="veaarev_vaModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="user_kod" ColumnName="user_kod" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="user_password" ColumnName="user_password" />
+                <ScalarProperty Name="user_firsname" ColumnName="user_firsname" />
+                <ScalarProperty Name="user_lastname" ColumnName="user_lastname" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="user_phone" ColumnName="user_phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donation_for_package">
+            <EntityTypeMapping TypeName="veaarev_vaModel.Donation_for_package">
+              <MappingFragment StoreEntitySet="Donation_for_package">
+                <ScalarProperty Name="troma_kod" ColumnName="troma_kod" />
+                <ScalarProperty Name="package_kod" ColumnName="package_kod" />
+                <ScalarProperty Name="donation_for_package_kod" ColumnName="donation_for_package_kod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Selected_Products">
+            <EntityTypeMapping TypeName="veaarev_vaModel.Selected_Products">
+              <MappingFragment StoreEntitySet="Selected_Products">
+                <ScalarProperty Name="donation_for_package_kod" ColumnName="donation_for_package_kod" />
+                <ScalarProperty Name="amount_of_tickets" ColumnName="amount_of_tickets" />
+                <ScalarProperty Name="product_kod" ColumnName="product_kod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Donations">
+            <EntityTypeMapping TypeName="veaarev_vaModel.Donation">
+              <MappingFragment StoreEntitySet="Donations">
+                <ScalarProperty Name="receipt" ColumnName="receipt" />
+                <ScalarProperty Name="troma_amount" ColumnName="troma_amount" />
+                <ScalarProperty Name="troma_date" ColumnName="troma_date" />
+                <ScalarProperty Name="user_kod" ColumnName="user_kod" />
+                <ScalarProperty Name="troma_kod" ColumnName="troma_kod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="veaarev_vaModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="winner_id" ColumnName="winner_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="amount_of_tickets_even" ColumnName="amount_of_tickets_even" />
+                <ScalarProperty Name="prouduct_picture" ColumnName="prouduct_picture" />
+                <ScalarProperty Name="torem_id" ColumnName="torem_id" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_kod" ColumnName="product_kod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tormims">
+            <EntityTypeMapping TypeName="veaarev_vaModel.Tormim">
+              <MappingFragment StoreEntitySet="Tormim">
+                <ScalarProperty Name="torem_phone" ColumnName="torem_phone" />
+                <ScalarProperty Name="torem_email" ColumnName="torem_email" />
+                <ScalarProperty Name="torem_address" ColumnName="torem_address" />
+                <ScalarProperty Name="Business_name" ColumnName="Business_name" />
+                <ScalarProperty Name="torem_id" ColumnName="torem_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products_for_packages">
+            <EntityTypeMapping TypeName="veaarev_vaModel.products_for_packages">
+              <MappingFragment StoreEntitySet="products_for_packages">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="Free_lottery_minimum_amount" ColumnName="Free_lottery_minimum_amount" />
+                <ScalarProperty Name="product_kod" ColumnName="product_kod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

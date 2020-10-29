@@ -1,0 +1,26 @@
+
+img
+{
+    
+/* width: 890px;
+height: 350px; */
+/* margin: 7px; */
+/* margin-top: 40px; */
+
+width: 100%;
+height: 80%;
+margin-top: 3%;
+/* margin-left: 500%; */
+/* margin-right: 0%; */
+
+
+}
+
+#botton
+{
+    height: 21%;
+    width: 22%;
+    position: fixed;
+    bottom: 6.18%;
+    right: 77.4%;
+}

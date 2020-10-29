@@ -1,0 +1,8 @@
+
+<div *ngFor="let item of products">
+    <div *ngIf="item.product_kod==product_code">
+            <img class="pictures" src="assets/{{item.prouduct_picture}}.jpg" (click)="check(item.description)">  
+    <div id="description">{{item.description}}</div>
+
+    </div>
+</div>
